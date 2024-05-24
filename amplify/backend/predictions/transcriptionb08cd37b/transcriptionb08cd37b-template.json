@@ -1,0 +1,158 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.12.0\",\"stackType\":\"predictions-Transcribe\",\"metadata\":{}}",
+  "Parameters": {
+    "authRoleName": {
+      "Type": "String"
+    },
+    "unauthRoleName": {
+      "Type": "String"
+    },
+    "convertPolicyName": {
+      "Type": "String"
+    },
+    "convertType": {
+      "Type": "String"
+    },
+    "access": {
+      "Type": "String"
+    },
+    "resourceName": {
+      "Type": "String"
+    },
+    "language": {
+      "Type": "String"
+    },
+    "env": {
+      "Type": "String"
+    }
+  },
+  "Conditions": {
+    "AuthGuestRoleAccess": {
+      "Fn::Equals": [
+        {
+          "Ref": "access"
+        },
+        "authAndGuest"
+      ]
+    }
+  },
+  "Outputs": {
+    "region": {
+      "Value": {
+        "Fn::FindInMap": [
+          "RegionMapping",
+          {
+            "Ref": "AWS::Region"
+          },
+          {
+            "Ref": "convertType"
+          }
+        ]
+      }
+    },
+    "language": {
+      "Value": {
+        "Ref": "language"
+      }
+    }
+  },
+  "Resources": {
+    "PollyPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": {
+          "Ref": "convertPolicyName"
+        },
+        "Roles": {
+          "Fn::If": [
+            "AuthGuestRoleAccess",
+            [
+              {
+                "Ref": "authRoleName"
+              },
+              {
+                "Ref": "unauthRoleName"
+              }
+            ],
+            [
+              {
+                "Ref": "authRoleName"
+              }
+            ]
+          ]
+        },
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "transcribe:GetTranscriptionJob",
+                "transcribe:StartStreamTranscription",
+                "transcribe:StartStreamTranscriptionWebSocket",
+                "transcribe:StartTranscriptionJob"
+              ],
+              "Resource": "*"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Mappings": {
+    "RegionMapping": {
+      "us-east-1": {
+        "transcription": "us-east-1"
+      },
+      "us-east-2": {
+        "transcription": "us-east-2"
+      },
+      "us-west-1": {
+        "transcription": "us-west-1"
+      },
+      "us-west-2": {
+        "transcription": "us-west-2"
+      },
+      "ca-central-1": {
+        "transcription": "ca-central-1"
+      },
+      "eu-west-1": {
+        "transcription": "eu-west-1"
+      },
+      "eu-west-2": {
+        "transcription": "eu-west-2"
+      },
+      "eu-west-3": {
+        "transcription": "eu-west-3"
+      },
+      "eu-central-1": {
+        "transcription": "eu-central-1"
+      },
+      "eu-north-1": {
+        "transcription": "eu-central-1"
+      },
+      "ap-northeast-1": {
+        "transcription": "ap-northeast-2"
+      },
+      "ap-northeast-2": {
+        "transcription": "ap-northeast-2"
+      },
+      "ap-southeast-1": {
+        "transcription": "ap-southeast-1"
+      },
+      "ap-southeast-2": {
+        "transcription": "ap-southeast-2"
+      },
+      "ap-south-1": {
+        "transcription": "ap-south-1"
+      },
+      "me-south-1": {
+        "transcription": "me-south-1"
+      },
+      "sa-east-1": {
+        "transcription": "sa-east-1"
+      }
+    }
+  }
+}

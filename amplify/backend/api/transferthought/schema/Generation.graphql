@@ -1,0 +1,6 @@
+type Generation @model @key(fields: ["prompt"]) {
+    prompt: String!
+    status: String!
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+}

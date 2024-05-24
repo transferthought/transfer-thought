@@ -1,0 +1,200 @@
+type Course
+    @model
+    @key(name: "OwnerCoursesByTitle", fields: ["owner", "title"], queryField: "ownerCoursesByTitle")
+    @auth(rules: [{ allow: public, operations: [read] }, { allow: private, operations: [read] }, { allow: owner, operations: [create, update, delete] }]) {
+    id: ID!
+    title: String!
+    description: String
+    owner: String
+    sections: String!
+    thumbnailUrl: String
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+}
+type User @model @auth(rules: [{ allow: owner, operations: [create, read, update, delete] }]) {
+    owner: String
+    email: String
+    firstName: String
+    lastName: String
+    autoShowTour: Boolean
+    plan: String
+    unlimted: Boolean
+    unlimtedLifetime: Boolean
+    totalAllottedViews: Int
+    totalViews: Int @auth(rules: [{ allow: public, operations: [read, update] }, { allow: private, operations: [read, update] }])
+    currentMonthViews: Int @auth(rules: [{ allow: public, operations: [read, update] }, { allow: private, operations: [read, update] }])
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+}
+enum AppTypes {
+    master
+    published
+    prefab
+}
+
+type App
+    @model
+    @key(fields: ["appId", "type"])
+    @key(name: "OwnerAppsByName", fields: ["owner", "name"], queryField: "ownerAppsByName")
+    @key(name: "OwnerAppsByUpdatedAt", fields: ["owner", "updatedAt"], queryField: "ownerAppsByUpdatedAt")
+    @auth(
+        rules: [
+            { allow: public, operations: [read, create] }
+            { allow: private, operations: [read] }
+            { allow: owner, operations: [create, update, delete] }
+            { allow: groups, groups: ["TT-Super-Admin"], operations: [create, update, delete] }
+        ]
+    ) {
+    appId: ID!
+    type: AppTypes!
+    name: String!
+    owner: String
+    state: String!
+    config: String!
+    actions: String!
+    thumbnailUrl: String
+    unlimted: Boolean
+    unlimtedLifetime: Boolean
+    totalViews: Int @auth(rules: [{ allow: public, operations: [read, update] }, { allow: private, operations: [read, update] }])
+    currentMonthViews: Int @auth(rules: [{ allow: public, operations: [read, update] }, { allow: private, operations: [read, update] }])
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+    pages: [PageApp] @connection(keyName: "byApp", fields: ["appId"])
+}
+
+type AppInstance
+    @model
+    @key(name: "ByAppId", fields: ["appId", "createdAt"], queryField: "instanceByAppId")
+    @auth(
+        rules: [{ allow: public, operations: [read, create] }, { allow: private, operations: [read] }, { allow: owner, operations: [create, update, delete] }]
+    ) {
+    id: ID!
+    appId: ID!
+    owner: String
+    state: String!
+    config: String!
+    thumbnailUrl: String
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+}
+enum TagTypes {
+    thumbnail
+    pdf
+    unknown
+    go
+}
+type Asset
+    @model(subscriptions: null)
+    @key(name: "OwnerAssetsByName", fields: ["owner", "name"], queryField: "ownerAssetsByName")
+    @key(name: "OwnerTagAssetsByName", fields: ["owner", "tag", "name"], queryField: "ownerTagAssetsByName")
+    @key(name: "OwnerAssetsByUpdatedAt", fields: ["owner", "updatedAt"], queryField: "ownerAssetsByUpdatedAt")
+    @auth(
+        rules: [
+            { allow: public, operations: [read, create, update] }
+            { allow: private, operations: [read] }
+            { allow: owner, operations: [create, update, delete] }
+        ]
+    ) {
+    id: ID!
+    parentId: ID
+    parent: Asset @connection(fields: ["parentId"])
+    name: String!
+    tag: TagTypes!
+    fileType: String!
+    key: String!
+    owner: String
+    isFolder: Boolean
+    variations: String
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+}
+
+type Event
+    @model(subscriptions: null)
+    @key(fields: ["id", "subscriptionId", "createdAt"])
+    @key(name: "BySubscriptionId", fields: ["subscriptionId", "createdAt"], queryField: "itemsBySubscriptionId")
+    @auth(rules: [{ allow: public, operations: [read, create, update, delete] }, { allow: private, operations: [read, create, update, delete] }]) {
+    id: ID!
+    subscriptionId: String!
+    name: String!
+    data: String!
+    createdAt: AWSDateTime!
+}
+
+type Subscription {
+    onCreateEvent(subscriptionId: String): Event @aws_subscribe(mutations: ["createEvent"]) @aws_api_key @aws_cognito_user_pools
+    onCreateAsset(owner: String): Asset @aws_subscribe(mutations: ["createAsset"]) @aws_api_key @aws_cognito_user_pools
+    onUpdateAsset(owner: String): Asset @aws_subscribe(mutations: ["updateAsset"]) @aws_api_key @aws_cognito_user_pools
+}
+type Session
+    @model
+    @key(name: "UserSessionsByAppId", fields: ["owner", "appId"], queryField: "userSessionsByAppId")
+    @key(name: "SessionsByAppId", fields: ["appId", "createdAt"], queryField: "sessionsByAppId")
+    @auth(
+        rules: [{ allow: public, operations: [read, create] }, { allow: private, operations: [read] }, { allow: owner, operations: [create, update, delete] }]
+    ) {
+    id: ID!
+    owner: String
+    appId: ID!
+    data: String!
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+    completedAt: AWSDateTime
+}
+type Generation @model @key(name: "GenerationByPrompt", fields: ["prompt"], queryField: "getGenerationByPrompt") {
+    id: ID!
+    prompt: String!
+    status: String!
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+}
+
+type Redirect
+    @model
+    @key(fields: ["source"])
+    @key(name: "SourceByDestination", fields: ["destination"], queryField: "sourceByDestination")
+    @auth(rules: [{ allow: public, operations: [read] }, { allow: private, operations: [read] }, { allow: owner, operations: [create, update, delete] }]) {
+    source: String!
+    destination: String!
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+}
+
+enum PageTypes {
+    master
+    published
+}
+
+type Page
+    @model
+    @key(fields: ["id", "type"])
+    @key(name: "OwnerPagesByTitle", fields: ["owner", "title"], queryField: "ownerPagesByTitle")
+    @key(name: "OwnerPagesByUpdatedAt", fields: ["owner", "updatedAt"], queryField: "ownerPagesByUpdatedAt")
+    @auth(rules: [{ allow: public, operations: [read] }, { allow: private, operations: [read] }, { allow: owner, operations: [create, update, delete] }]) {
+    id: ID!
+    type: PageTypes!
+    title: String!
+    owner: String
+    data: String!
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+    apps: [PageApp] @connection(keyName: "byPage", fields: ["id"])
+}
+
+# Create a join model and disable queries as you don't need them
+# and can query through Page.apps and App.Pages
+type PageApp
+    @model
+    @key(name: "byPage", fields: ["pageId", "appId"])
+    @key(name: "byApp", fields: ["appId", "pageId"])
+    @auth(rules: [{ allow: public, operations: [read] }, { allow: private, operations: [read] }, { allow: owner, operations: [create, update, delete] }]) {
+    id: ID!
+    pageId: ID!
+    appId: ID!
+    data: String!
+}
+
+type PromoCode @model(subscriptions: null) @auth(rules: [{ allow: public, operations: [read, update] }, { allow: private, operations: [read, update] }]) {
+    id: ID!
+    isValid: Boolean!
+}

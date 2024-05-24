@@ -1,0 +1,34 @@
+<a-scene environment="preset: forest" render-order="menuBackground, menuItem, button">
+        <a-assets>
+                <a-asset-item id="City1PowerlineModel"
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/powerlines/City1.glb"></a-asset-item>
+                <a-asset-item id="Village1PowerlineModel"
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/powerlines/Village1.glb">
+                </a-asset-item>
+                <img id="City1PowerlineTexture"
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/powerlines/textures/City1.jpg"
+                        crossorigin>
+                <img id="Village1PowerlineTexture"
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/powerlines/textures/Village1.jpg"
+                        crossorigin>
+        </a-assets>
+        <a-entity id="leftHand" laser-controls="hand: left" daydream-controls="hand: left" gearvr-controls="hand: left"
+                oculus-go-controls="hand: left" oculus-touch-controls="" vive-controls=""
+                vive-focus-controls="hand: left" windows-motion-controls="hand: left"
+                raycaster="objects: [raycastable]"></a-entity>
+        <a-entity id="rightHand" laser-controls="hand: right" daydream-controls="hand: right"
+                gearvr-controls="hand: right" oculus-go-controls="hand: right" oculus-touch-controls="hand: right"
+                vive-controls="hand: right" vive-focus-controls="hand: right" windows-motion-controls=""
+                raycaster="objects: [raycastable]"></a-entity>
+        <a-entity id="camera" camera="" look-controls="" wasd-controls="" position="0 8 0" rotation="0 0 0">
+                <a-entity position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                        material="color: cyan; shader: flat" cursor="maxDistance: 30; fuse: false"
+                        raycaster="objects: [raycastable]">
+                </a-entity>
+        </a-entity>
+        <a-entity id="City1Powerline" position="0 0 -2.75" gltf-model="#City1PowerlineModel"
+                modify-materials="path: #City1PowerlineTexture; secondary: #City1PowerlineTexture;"></a-entity>
+        <a-entity id="Village1Powerline" position="2 0 -4" gltf-model="#Village1PowerlineModel"
+                modify-materials="path: #Village1PowerlineTexture; secondary: #Village1PowerlineTexture;"></a-entity>
+
+</a-scene>

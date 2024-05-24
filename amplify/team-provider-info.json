@@ -1,0 +1,327 @@
+{
+  "master": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-transferthought-master-21307-authRole",
+      "UnauthRoleArn": "arn:aws:iam::522960001466:role/amplify-transferthought-master-21307-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::522960001466:role/amplify-transferthought-master-21307-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-transferthought-master-21307-deployment",
+      "UnauthRoleName": "amplify-transferthought-master-21307-unauthRole",
+      "StackName": "amplify-transferthought-master-21307",
+      "StackId": "arn:aws:cloudformation:us-east-1:522960001466:stack/amplify-transferthought-master-21307/5a00e870-6a7c-11eb-b65d-0a4db9a5d67f",
+      "AmplifyAppId": "d2tqj5nojb3spc"
+    },
+    "categories": {
+      "auth": {
+        "transferthought1015a9c5": {}
+      },
+      "api": {
+        "transferthought": {},
+        "Stripe": {}
+      },
+      "storage": {
+        "s3f39ed916": {}
+      },
+      "predictions": {
+        "speechGeneratoreebef0ec": {},
+        "transcriptionb08cd37b": {}
+      },
+      "function": {
+        "StripeCheckoutSession": {
+          "deploymentBucketName": "amplify-transferthought-master-21307-deployment",
+          "s3Key": "amplify-builds/StripeCheckoutSession-4c2f6c4852656c6e4f43-build.zip"
+        },
+        "StripeWebhook": {
+          "deploymentBucketName": "amplify-transferthought-master-21307-deployment",
+          "s3Key": "amplify-builds/StripeWebhook-4f30564d6747412b3533-build.zip"
+        },
+        "CreateAssetVariation": {
+          "deploymentBucketName": "amplify-transferthought-master-21307-deployment",
+          "s3Key": "amplify-builds/CreateAssetVariation-4f5732775334797a4176-build.zip",
+          "secretsPathAmplifyAppId": "d2tqj5nojb3spc"
+        }
+      }
+    }
+  },
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-transferthought-staging-235825-authRole",
+      "UnauthRoleArn": "arn:aws:iam::522960001466:role/amplify-transferthought-staging-235825-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::522960001466:role/amplify-transferthought-staging-235825-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-transferthought-staging-235825-deployment",
+      "UnauthRoleName": "amplify-transferthought-staging-235825-unauthRole",
+      "StackName": "amplify-transferthought-staging-235825",
+      "StackId": "arn:aws:cloudformation:us-east-1:522960001466:stack/amplify-transferthought-staging-235825/88d7da90-6a69-11eb-8677-0ab042f700a7",
+      "AmplifyAppId": "d2tqj5nojb3spc"
+    },
+    "categories": {
+      "auth": {
+        "transferthought1015a9c5": {}
+      },
+      "storage": {
+        "s3f39ed916": {}
+      },
+      "api": {
+        "transferthought": {}
+      },
+      "predictions": {
+        "speechGeneratoreebef0ec": {},
+        "transcriptionb08cd37b": {},
+        "identifyEntitiesfb144c27": {}
+      }
+    }
+  },
+  "test": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-transferthought-test-163152-authRole",
+      "UnauthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-test-163152-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-test-163152-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-transferthought-test-163152-deployment",
+      "UnauthRoleName": "amplify-transferthought-test-163152-unauthRole",
+      "StackName": "amplify-transferthought-test-163152",
+      "StackId": "arn:aws:cloudformation:us-east-1:335421854666:stack/amplify-transferthought-test-163152/b72eef50-13cb-11ef-abdf-0afff388d593",
+      "AmplifyAppId": "d41414er5d6qd"
+    },
+    "categories": {
+      "auth": {
+        "transferthought1015a9c5": {}
+      },
+      "function": {
+        "CreateAssetVariation": {
+          "secretsPathAmplifyAppId": "d41414er5d6qd"
+        },
+        "StripeCheckoutSession": {},
+        "StripeWebhook": {},
+        "transferthought": {},
+        "s3f39ed916": {}
+      }
+    }
+  },
+  "testing": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-transferthought-testing-164621-authRole",
+      "UnauthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testing-164621-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testing-164621-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-transferthought-testing-164621-deployment",
+      "UnauthRoleName": "amplify-transferthought-testing-164621-unauthRole",
+      "StackName": "amplify-transferthought-testing-164621",
+      "StackId": "arn:aws:cloudformation:us-east-1:335421854666:stack/amplify-transferthought-testing-164621/bc5e6120-13cd-11ef-a41b-1210ffae600d",
+      "AmplifyAppId": "d41414er5d6qd"
+    },
+    "categories": {
+      "auth": {
+        "transferthought1015a9c5": {
+          "googleClientId": "323697758102-jsjkl68osh393602cktq235m8e7vn6a5.apps.googleusercontent.com"
+        }
+      },
+      "function": {
+        "CreateAssetVariation": {
+          "secretsPathAmplifyAppId": "d41414er5d6qd"
+        },
+        "StripeCheckoutSession": {},
+        "StripeWebhook": {},
+        "transferthought": {},
+        "s3f39ed916": {},
+        "transferthought1015a9c5PostConfirmation": {},
+        "transferthought1015a9c5PreAuthentication": {},
+        "transferthought1015a9c5PreSignup": {}
+      }
+    }
+  },
+  "testthree": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-transferthought-testthree-170837-authRole",
+      "UnauthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testthree-170837-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testthree-170837-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-transferthought-testthree-170837-deployment",
+      "UnauthRoleName": "amplify-transferthought-testthree-170837-unauthRole",
+      "StackName": "amplify-transferthought-testthree-170837",
+      "StackId": "arn:aws:cloudformation:us-east-1:335421854666:stack/amplify-transferthought-testthree-170837/d9065190-13d0-11ef-9fff-0affd5b12f1b",
+      "AmplifyAppId": "d41414er5d6qd"
+    },
+    "categories": {
+      "auth": {
+        "transferthought1015a9c5": {
+          "googleClientId": "323697758102-jsjkl68osh393602cktq235m8e7vn6a5.apps.googleusercontent.com"
+        },
+        "userPoolGroups": {}
+      },
+      "function": {
+        "CreateAssetVariation": {
+          "secretsPathAmplifyAppId": "d41414er5d6qd"
+        },
+        "StripeCheckoutSession": {},
+        "StripeWebhook": {},
+        "transferthought1015a9c5PostConfirmation": {},
+        "transferthought1015a9c5PreAuthentication": {},
+        "transferthought1015a9c5PreSignup": {},
+        "transferthought": {},
+        "s3f39ed916": {}
+      }
+    }
+  },
+  "testfour": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-transferthought-testfour-172635-authRole",
+      "UnauthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testfour-172635-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testfour-172635-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-transferthought-testfour-172635-deployment",
+      "UnauthRoleName": "amplify-transferthought-testfour-172635-unauthRole",
+      "StackName": "amplify-transferthought-testfour-172635",
+      "StackId": "arn:aws:cloudformation:us-east-1:335421854666:stack/amplify-transferthought-testfour-172635/5b5810a0-13d3-11ef-9961-0affe1279fd3",
+      "AmplifyAppId": "d41414er5d6qd"
+    },
+    "categories": {
+      "auth": {
+        "transferthought1015a9c5": {
+          "googleClientId": "323697758102-jsjkl68osh393602cktq235m8e7vn6a5.apps.googleusercontent.com"
+        },
+        "userPoolGroups": {}
+      },
+      "function": {
+        "CreateAssetVariation": {
+          "secretsPathAmplifyAppId": "d41414er5d6qd"
+        },
+        "StripeCheckoutSession": {},
+        "StripeWebhook": {},
+        "transferthought1015a9c5PostConfirmation": {},
+        "transferthought1015a9c5PreAuthentication": {},
+        "transferthought1015a9c5PreSignup": {},
+        "transferthought": {},
+        "s3f39ed916": {}
+      }
+    }
+  },
+  "testfive": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-transferthought-testfive-173751-authRole",
+      "UnauthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testfive-173751-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testfive-173751-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-transferthought-testfive-173751-deployment",
+      "UnauthRoleName": "amplify-transferthought-testfive-173751-unauthRole",
+      "StackName": "amplify-transferthought-testfive-173751",
+      "StackId": "arn:aws:cloudformation:us-east-1:335421854666:stack/amplify-transferthought-testfive-173751/ee328ee0-13d4-11ef-9961-0affe1279fd3",
+      "AmplifyAppId": "d41414er5d6qd"
+    },
+    "categories": {
+      "auth": {
+        "transferthought1015a9c5": {
+          "googleClientId": "323697758102-jsjkl68osh393602cktq235m8e7vn6a5.apps.googleusercontent.com"
+        },
+        "userPoolGroups": {}
+      },
+      "function": {
+        "CreateAssetVariation": {
+          "secretsPathAmplifyAppId": "d41414er5d6qd"
+        },
+        "StripeCheckoutSession": {},
+        "StripeWebhook": {},
+        "transferthought1015a9c5PostConfirmation": {},
+        "transferthought1015a9c5PreAuthentication": {},
+        "transferthought1015a9c5PreSignup": {},
+        "transferthought": {},
+        "s3f39ed916": {}
+      }
+    }
+  },
+  "testsix": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-transferthought-testsix-175950-authRole",
+      "UnauthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testsix-175950-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testsix-175950-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-transferthought-testsix-175950-deployment",
+      "UnauthRoleName": "amplify-transferthought-testsix-175950-unauthRole",
+      "StackName": "amplify-transferthought-testsix-175950",
+      "StackId": "arn:aws:cloudformation:us-east-1:335421854666:stack/amplify-transferthought-testsix-175950/007f6f70-13d8-11ef-9430-0e8d018edbab",
+      "AmplifyAppId": "d41414er5d6qd"
+    },
+    "categories": {
+      "auth": {
+        "transferthought1015a9c5": {
+          "googleClientId": "323697758102-jsjkl68osh393602cktq235m8e7vn6a5.apps.googleusercontent.com"
+        },
+        "userPoolGroups": {}
+      },
+      "function": {
+        "CreateAssetVariation": {
+          "secretsPathAmplifyAppId": "d41414er5d6qd"
+        },
+        "StripeCheckoutSession": {},
+        "StripeWebhook": {},
+        "transferthought1015a9c5PostConfirmation": {},
+        "transferthought1015a9c5PreAuthentication": {},
+        "transferthought1015a9c5PreSignup": {},
+        "transferthought": {},
+        "s3f39ed916": {}
+      }
+    }
+  },
+  "testseven": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-transferthought-testseven-c0c15-authRole",
+      "UnauthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testseven-c0c15-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::335421854666:role/amplify-transferthought-testseven-c0c15-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-transferthought-testseven-c0c15-deployment",
+      "UnauthRoleName": "amplify-transferthought-testseven-c0c15-unauthRole",
+      "StackName": "amplify-transferthought-testseven-c0c15",
+      "StackId": "arn:aws:cloudformation:us-east-1:335421854666:stack/amplify-transferthought-testseven-c0c15/be2a04b0-1462-11ef-abdf-0affe3df61b1",
+      "AmplifyAppId": "d41414er5d6qd"
+    },
+    "categories": {
+      "auth": {
+        "transferthought1015a9c5": {
+          "googleClientId": "323697758102-jsjkl68osh393602cktq235m8e7vn6a5.apps.googleusercontent.com"
+        },
+        "userPoolGroups": {}
+      },
+      "function": {
+        "CreateAssetVariation": {
+          "secretsPathAmplifyAppId": "d41414er5d6qd",
+          "deploymentBucketName": "amplify-transferthought-testseven-c0c15-deployment",
+          "s3Key": "amplify-builds/CreateAssetVariation-624b312b677551306f53-build.zip"
+        },
+        "StripeCheckoutSession": {
+          "deploymentBucketName": "amplify-transferthought-testseven-c0c15-deployment",
+          "s3Key": "amplify-builds/StripeCheckoutSession-4c2f6c4852656c6e4f43-build.zip"
+        },
+        "StripeWebhook": {
+          "deploymentBucketName": "amplify-transferthought-testseven-c0c15-deployment",
+          "s3Key": "amplify-builds/StripeWebhook-4f30564d6747412b3533-build.zip"
+        },
+        "transferthought1015a9c5PostConfirmation": {
+          "deploymentBucketName": "amplify-transferthought-testseven-c0c15-deployment",
+          "s3Key": "amplify-builds/transferthought1015a9c5PostConfirmation-777377733267506f6c2f-build.zip"
+        },
+        "transferthought1015a9c5PreAuthentication": {
+          "deploymentBucketName": "amplify-transferthought-testseven-c0c15-deployment",
+          "s3Key": "amplify-builds/transferthought1015a9c5PreAuthentication-774c552f4f6a706d3868-build.zip"
+        },
+        "transferthought1015a9c5PreSignup": {
+          "deploymentBucketName": "amplify-transferthought-testseven-c0c15-deployment",
+          "s3Key": "amplify-builds/transferthought1015a9c5PreSignup-646452326547452b6a7a-build.zip"
+        },
+        "transferthought": {},
+        "s3f39ed916": {}
+      },
+      "api": {
+        "Stripe": {},
+        "transferthought": {}
+      },
+      "predictions": {
+        "speechGeneratoreebef0ec": {},
+        "transcriptionb08cd37b": {}
+      },
+      "storage": {
+        "s3f39ed916": {}
+      }
+    }
+  }
+}

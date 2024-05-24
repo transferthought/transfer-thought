@@ -1,0 +1,176 @@
+<a-scene render-order="menuBackground, menuItem, button">
+        <a-assets>
+                <a-asset-item id="female"
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/avatars/low-poly/females/female_bonus_LOW.glb">
+                </a-asset-item>
+                <a-asset-item id="male"
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/avatars/low-poly/males/tallguy-low.glb">
+                </a-asset-item>
+                <a-asset-item id="chair"
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/props/chair01.glb">
+                </a-asset-item>
+                <img id="chairTexture"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/props/textures/chair01_1.png">
+                <img id="JoTexture"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/avatars/low-poly/females/textures/female_add_01.jpg"
+                        >
+                <img id="RiaTexture"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/avatars/low-poly/females/textures/female_add_12.jpg">
+                <img id="DasonTexture"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/avatars/low-poly/males/textures/male_f_t12.jpg">
+                <img id="MajorTexture"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/avatars/low-poly/males/textures/male_f_t18.jpg">
+                <audio id="NarratorAudio1"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Narrator_1.mp3"></audio>
+                <audio id="NarratorAudio2"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Narrator_2.mp3"></audio>
+                <audio id="NarratorAudio3"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Narrator_3.mp3"></audio>
+                <audio id="NarratorAudio4"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Narrator_4.mp3"></audio>
+                <audio id="JoAudio1"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Jo_1.mp3"></audio>
+                <audio id="JoAudio2"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Jo_2.mp3"></audio>
+                <audio id="JoAudio3"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Jo_3.mp3"></audio>
+                <audio id="JoAudio4"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Jo_4.mp3"></audio>
+                <audio id="MajorAudio1"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Major_1.mp3"></audio>
+                <audio id="MajorAudio2"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Major_2.mp3"></audio>
+                <audio id="MajorAudio3"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Major_3.mp3"></audio>
+                <audio id="RiaAudio1"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Ria_1.mp3"></audio>
+                <audio id="RiaAudio2"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Ria_2.mp3"></audio>
+                <audio id="RiaAudio3"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Ria_3.mp3"></audio>
+                <audio id="DasonAudio1"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Dason_1.mp3"></audio>
+                <audio id="DasonAudio2"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/client/socialworkvr/audio/Dason_2.mp3"></audio>
+
+
+                <img id="pageIconImg"
+                        crossorigin
+                        src="https://cdn.glitch.com/0ddef241-2c1a-4bc2-8d47-58192c718908%2FdownIcon.png?1557829539105">
+                <img id="sliceImg"
+                        crossorigin
+                        src="https://cdn.glitch.com/0ddef241-2c1a-4bc2-8d47-58192c718908%2Fslice.png?1557308835598">
+                <img id="logoImg"
+                        crossorigin
+                        src="https://cdn.glitch.com/0ddef241-2c1a-4bc2-8d47-58192c718908%2Fsymbol-transparent.png?1557312318582">
+
+                <a-mixin id="font" text="font: roboto"></a-mixin>
+                <a-mixin id="slice"
+                        slice9="color: #050505; transparent: true; width: 3; height: 3;opacity: 0.9; src: #sliceImg; left: 50; right: 52; top: 50; bottom: 52; padding: 0.15">
+                </a-mixin>
+
+                <a-mixin id="buttonBackground" mixin="slice" slice9="width: 1.3; height: 0.3; color: #030303"
+                        render-order="button"></a-mixin>
+                <a-mixin id="buttonHoverEffect"
+                        animation__mouseenter="property: components.slice9.material.color; type: color; from: #030303; to: #333; easing: easeOutCubic; dur: 150; startEvents: mouseenter"
+                        animation__mouseleave="property: components.slice9.material.color; type: color; from: #333; to: #030303; easing: easeOutCubic; dur: 150; startEvents: mouseleave">
+                </a-mixin>
+                <a-mixin id="buttonText" mixin="font" text="align: center; width: 2.5; zOffset: 0.01; color: #333">
+                </a-mixin>
+                <a-mixin id="button" mixin="buttonBackground buttonHoverEffect buttonText" render-order="button"
+                        proxy-event="event: click; to: a-scene; captureBubbles: true"></a-mixin>
+                <a-mixin id="pageButton" geometry="primitive: plane; width: 0.15; height: 0.15"
+                        material="src: #pageIconImg; shader: flat; transparent: true"
+                        animation__mouseenter="property: components.material.material.color; type: color; from: #FFF; to: #AAF; dur: 100; startEvents: mouseenter"
+                        animation__mouseleave="property: components.material.material.color; type: color; from: #AAF; to: #FFF; dur: 100; startEvents: mouseleave">
+                </a-mixin>
+
+                <a-mixin id="buttonMain" mixin="button" bind__visible="step === 'CHARACTER_SELECTED'"
+                        bind-toggle__raycastable="step === 'CHARACTER_SELECTED'"></a-mixin>
+        </a-assets>
+        <a-entity id="leftHand" laser-controls="hand: left" daydream-controls="hand: left" gearvr-controls="hand: left"
+                oculus-go-controls="hand: left" oculus-touch-controls="" vive-controls=""
+                vive-focus-controls="hand: left" windows-motion-controls="hand: left"
+                raycaster="objects: [raycastable]"></a-entity>
+        <a-entity id="rightHand" laser-controls="hand: right" daydream-controls="hand: right"
+                gearvr-controls="hand: right" oculus-go-controls="hand: right" oculus-touch-controls="hand: right"
+                vive-controls="hand: right" vive-focus-controls="hand: right" windows-motion-controls=""
+                raycaster="objects: [raycastable]"></a-entity>
+        <a-entity id="camera" camera="" look-controls="" wasd-controls="" position="0 1 0" rotation="0 0 0">
+                <a-entity position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                        material="color: cyan; shader: flat" cursor="maxDistance: 30; fuse: false"
+                        raycaster="objects: [raycastable]">
+                </a-entity>
+        </a-entity>
+        <a-entity id="chair1" position="0 0 -2.75" gltf-model="#chair" modify-materials="path: #chairTexture">
+        <a-entity id="Jo" position="0 0 -2.16493" gltf-model="#female"
+                bind__animation-mixer-new="clip: characters.Jo.clip; crossFadeDuration: .3; subClips: subClipDefinitions.female"
+                animation-mixer-new="clip: sit; crossFadeDuration: .3" modify-materials="path: #JoTexture"
+                bind__sound="src: characters.Jo.currentDialogue; volume: .5" sound="src: #JoAudio1; volume: .5"
+                handle-events animation__position="property: position; to: -8 0 0; dur: 4000; autoplay: false"
+                animation__rotation="property: rotation; to: 0 -75 0; dur: 1000; autoplay: false"
+                bind-toggle__raycastable="step === 'SELECT_CHARACTER' || 'ROUND_2'"></a-entity>
+        <a-entity id="Narrator" bind__sound="src: characters.Narrator.currentDialogue; volume: .5"></a-entity>
+        <a-entity id="floor" geometry="primitive: box; width: 20; height: 1; depth: 10" material="color: grey"
+                position="0 -.5 0"></a-entity>
+        <a-entity id="ceiling" geometry="primitive: box; width: 20; height: 1; depth: 10" material="color: white"
+                position="0 5 0"></a-entity>
+        <a-entity id="wall1" geometry="primitive: box; width: 1; height: 5; depth: 10" material="color: white"
+                position="5 2.5 0"></a-entity>
+        <a-entity id="wall2a" geometry="primitive: box; width: 1; height: 5; depth: 3" material="color: white"
+                position="-5 2.5 -3"></a-entity>
+        <a-entity id="wall2b" geometry="primitive: box; width: 1; height: 5; depth: 3" material="color: white"
+                position="-5 2.5 3"></a-entity>
+        <a-entity id="wall3" geometry="primitive: box; width: 20; height: 5; depth: 1" material="color: white"
+                position="0 2.5 -5"></a-entity>
+        <a-entity id="wall4" geometry="primitive: box; width: 20; height: 5; depth: 1" material="color: white"
+                position="0 2.5 5"></a-entity>
+
+        <a-entity id="wall-endcap" geometry="primitive: box; width: 1; height: 5; depth: 10" material="color: white"
+                position="-10 2.5 0"></a-entity>
+
+
+        <a-entity id="menu" position="0 3 -4">
+                <a-entity id="menuBackground" mixin="slice"
+                        render-order="menuBackground"></a-entity>
+
+                <a-entity id="mainMenu">
+                        <a-entity id="title" text="value: Social Work VR; color: #FAFAFA; width: 4; align: center"
+                                position="0 1.2 0.01" render-order="menuItem"></a-entity>
+
+                        <a-entity id="score" text="value: Final Score 80%; color: #FAFAFA; width: 4; align: center"
+                                position="0 0.5 0.01" bind__visible="step === 'FINAL_SCORE'" render-order="menuItem">
+                        </a-entity>
+                        <a-entity mixin="button" bind__visible="step === 'INTRO'"
+                        bind-toggle__raycastable="step === 'INTRO'" text="value: START; color: #0F0"
+                        proxy-event="as: start"></a-entity>
+                        <a-entity class="buttons" layout="type: box; columns: 1; marginRow: -0.5" position="0 0 0.02">
+                                <a-entity mixin="buttonMain" text="value: Tell me more; color: #48BAEA"
+                                        proxy-event="as: tellMeMore"></a-entity>
+                                <a-entity mixin="buttonMain" text="value: Move On; color: #F85333"
+                                        proxy-event="as: moveOn"></a-entity>
+                        </a-entity>
+                </a-entity>
+        </a-entity>
+</a-scene>

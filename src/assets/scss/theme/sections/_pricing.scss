@@ -1,0 +1,55 @@
+.pricing {
+
+	.tiles-item-inner {
+		background: get-color(dark, 2);
+	}
+}
+
+.pricing-item-header {
+	@include divider(after);
+
+	&::after {
+		background: get-color(dark, 3);
+		max-width: 88px;
+	}
+}
+
+.pricing-item-price-currency {
+	color: color(base);
+}
+
+ul.pricing-item-features-list {
+	@include divider(after);
+
+	&::after {
+		background: get-color(dark, 3);
+	}
+
+	li {
+		margin-bottom: 0;
+		padding: 14px 0;
+		@include divider(before);
+
+		&::before {
+			background: get-color(dark, 3);
+		}
+
+		&::after {
+			content: '';
+			display: block;
+			width: 24px;
+			height: 24px;
+			margin-right: 12px;
+			background-image: inline-svg('<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 11h14v2H5z" fill="' + get-color(light, 3) + '" fill-rule="nonzero"/></svg>');
+            background-repeat: no-repeat;
+            order: -1;
+		}
+
+		&.is-checked {
+
+			&::after {
+				background-image: inline-svg('<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><circle fill-opacity=".56" fill="#17C297" opacity=".36" cx="12" cy="12" r="12"/><path fill="#5DD2B5" d="M10.5 12.267l-2.5-1.6-1 1.066L10.5 16 17 9.067 16 8z"/></svg>');
+			}
+		}
+	}
+}

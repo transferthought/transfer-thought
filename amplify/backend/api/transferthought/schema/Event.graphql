@@ -1,0 +1,24 @@
+type Event
+@model(subscriptions: null)
+@key(fields: ["id", "subscriptionId", "createdAt"])
+@key(name: "BySubscriptionId", fields: ["subscriptionId", "createdAt"], queryField: "itemsBySubscriptionId")
+@auth(
+    rules: [
+        { allow: public, operations: [read, create, update, delete] },
+        { allow: private, operations: [read, create, update, delete] }
+    ]
+)
+{
+    id: ID!,
+    subscriptionId: String!,
+    name: String!,
+    data: String!,
+    createdAt: AWSDateTime!
+}
+
+type Subscription {
+  onCreateEvent(subscriptionId: String): Event 
+    @aws_subscribe(mutations: ["createEvent"])
+    @aws_api_key
+    @aws_cognito_user_pools 
+}

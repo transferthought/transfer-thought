@@ -1,0 +1,28 @@
+.news {
+
+	.tiles-item-inner {
+		background: get-color(dark, 2);		
+	}
+}
+
+
+.news-item-title {
+
+    a {
+        color: get-color(light, 1) !important;
+        text-decoration: none;
+    }
+}
+
+.news-item-more {
+    @include font-weight(header-link);
+
+    a {
+        color: get-color(light, 1);
+        text-decoration: none;
+
+        &:hover {
+            color: get-color(primary, 1);
+        }
+    }
+}

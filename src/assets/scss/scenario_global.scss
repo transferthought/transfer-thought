@@ -1,0 +1,21 @@
+.pointer-events-none,
+.pointer-events-none * {
+    pointer-events: none !important;
+}
+.user-select-none,
+.user-select-none * {
+    user-select: none !important;
+}
+
+.pointer-events-auto,
+.pointer-events-auto * {
+    pointer-events: auto !important;
+}
+.user-select-auto,
+.user-select-auto * {
+    user-select: auto !important;
+}
+
+.flex-wrap-no-wrap {
+    flex-wrap: nowrap !important;
+}

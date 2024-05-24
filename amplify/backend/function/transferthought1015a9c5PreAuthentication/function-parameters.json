@@ -1,0 +1,17 @@
+{
+  "trigger": true,
+  "modules": [
+    "custom"
+  ],
+  "parentResource": "transferthought1015a9c5",
+  "functionName": "transferthought1015a9c5PreAuthentication",
+  "resourceName": "transferthought1015a9c5PreAuthentication",
+  "parentStack": "auth",
+  "triggerEnvs": [],
+  "triggerDir": "/snapshot/repo/build/node_modules/@aws-amplify/amplify-category-auth/provider-utils/awscloudformation/triggers/PreAuthentication",
+  "triggerTemplate": "PreAuthentication.json.ejs",
+  "triggerEventPath": "PreAuthentication.event.json",
+  "roleName": "transferthought1015a9c5PreAuthentication",
+  "skipEdit": true,
+  "enableCors": false
+}

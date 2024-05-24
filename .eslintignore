@@ -1,0 +1,4 @@
+aws-exports.js
+src/tt-core/*
+src/libs/*
+amplify-codegen-temp/models/models

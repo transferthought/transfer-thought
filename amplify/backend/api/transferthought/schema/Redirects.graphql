@@ -1,0 +1,10 @@
+type Redirect
+    @model
+    @key(fields: ["source"])
+    @key(name: "SourceByDestination", fields: ["destination"], queryField: "sourceByDestination")
+    @auth(rules: [{ allow: public, operations: [read] }, { allow: private, operations: [read] }, { allow: owner, operations: [create, update, delete] }]) {
+    source: String!
+    destination: String!
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+}

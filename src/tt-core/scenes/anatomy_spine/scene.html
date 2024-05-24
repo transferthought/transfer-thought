@@ -1,0 +1,29 @@
+<a-scene environment="preset: forest" render-order="menuBackground, menuItem, button">
+        <a-assets>
+                <a-asset-item id="SpinalCordModel"
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/medical/spine/spine+cord.glb"></a-asset-item>
+                <a-asset-item id="PelvisModel"
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/medical/spine/skeletal+pelvis+original+b.glb">
+                </a-asset-item>
+
+        </a-assets>
+        <a-entity id="leftHand" laser-controls="hand: left" daydream-controls="hand: left" gearvr-controls="hand: left"
+                oculus-go-controls="hand: left" oculus-touch-controls="" vive-controls=""
+                vive-focus-controls="hand: left" windows-motion-controls="hand: left"
+                raycaster="objects: [raycastable]"></a-entity>
+        <a-entity id="rightHand" laser-controls="hand: right" daydream-controls="hand: right"
+                gearvr-controls="hand: right" oculus-go-controls="hand: right" oculus-touch-controls="hand: right"
+                vive-controls="hand: right" vive-focus-controls="hand: right" windows-motion-controls=""
+                raycaster="objects: [raycastable]"></a-entity>
+        <a-entity id="camera" camera="" look-controls="" wasd-controls="" position="0 1 0" rotation="0 0 0">
+                <a-entity position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                        material="color: cyan; shader: flat" cursor="maxDistance: 30; fuse: false"
+                        raycaster="objects: [raycastable]">
+                </a-entity>
+        </a-entity>
+        <a-entity id="SpinalCord" position="-1 1 -1" gltf-model="#SpinalCordModel" animation-mixer-new scale="0.001 0.001 0.001"
+                rotation="0 0 0"></a-entity>
+        <a-entity id="Pelvis" position="1 1 -1" gltf-model="#PelvisModel" animation-mixer-new scale="0.001 0.001 0.001"
+                rotation="0 0 0"></a-entity>
+
+</a-scene>

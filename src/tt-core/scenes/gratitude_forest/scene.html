@@ -1,0 +1,144 @@
+<a-scene environment="preset: forest; fog: 0;" render-order="menuBackground, menuItem, button">
+    <a-assets>
+        <a-asset-item
+        id="Tree3Model"
+        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/props/tree-birch.glb"
+        ></a-asset-item>
+        <img
+        id="NatureTexture1"
+        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/props/textures/color-atlas-new.png"
+        >
+
+        
+        <img id="pageIconImg"
+        crossorigin
+        src="https://cdn.glitch.com/0ddef241-2c1a-4bc2-8d47-58192c718908%2FdownIcon.png?1557829539105">
+        <img id="sliceImg"
+        crossorigin
+        src="https://cdn.glitch.com/0ddef241-2c1a-4bc2-8d47-58192c718908%2Fslice.png?1557308835598">
+        <img id="logoImg"
+        crossorigin
+        src="https://cdn.glitch.com/0ddef241-2c1a-4bc2-8d47-58192c718908%2Fsymbol-transparent.png?1557312318582">
+
+
+        
+        <a-mixin id="font" text="font: roboto"></a-mixin>
+        <a-mixin id="slice"
+                slice9="color: #050505; transparent: true; width: 3; height: 3;opacity: 0.9; src: #sliceImg; left: 50; right: 52; top: 50; bottom: 52; padding: 0.15">
+        </a-mixin>
+
+        <a-mixin id="buttonBackground" mixin="slice" slice9="width: 1.3; height: 0.3; color: #030303"
+                render-order="button"></a-mixin>
+        <a-mixin id="buttonHoverEffect"
+                animation__mouseenter="property: components.slice9.material.color; type: color; from: #030303; to: #333; easing: easeOutCubic; dur: 150; startEvents: mouseenter"
+                animation__mouseleave="property: components.slice9.material.color; type: color; from: #333; to: #030303; easing: easeOutCubic; dur: 150; startEvents: mouseleave">
+        </a-mixin>
+        <a-mixin id="buttonText" mixin="font" text="align: center; width: 2.5; zOffset: 0.01; color: #333">
+        </a-mixin>
+        <a-mixin id="button" mixin="buttonBackground buttonHoverEffect buttonText" render-order="button"
+                proxy-event="event: click; to: a-scene; captureBubbles: true"></a-mixin>
+        <a-mixin id="pageButton" geometry="primitive: plane; width: 0.15; height: 0.15"
+                material="src: #pageIconImg; shader: flat; transparent: true"
+                animation__mouseenter="property: components.material.material.color; type: color; from: #FFF; to: #AAF; dur: 100; startEvents: mouseenter"
+                animation__mouseleave="property: components.material.material.color; type: color; from: #AAF; to: #FFF; dur: 100; startEvents: mouseleave">
+        </a-mixin>
+
+        <a-mixin id="buttonMain" mixin="button" bind__visible="step === 'CHARACTER_SELECTED'"></a-mixin>
+    </a-assets>
+    <a-entity
+            id="leftHand"
+            laser-controls="hand: left"
+            daydream-controls="hand: left"
+            gearvr-controls="hand: left"
+            oculus-go-controls="hand: left"
+            oculus-touch-controls=""
+            vive-controls=""
+            vive-focus-controls="hand: left"
+            windows-motion-controls="hand: left"
+            raycaster="objects: [raycastable]"
+    ></a-entity>
+    <a-entity
+            id="rightHand"
+            laser-controls="hand: right"
+            daydream-controls="hand: right"
+            gearvr-controls="hand: right"
+            oculus-go-controls="hand: right"
+            oculus-touch-controls="hand: right"
+            vive-controls="hand: right"
+            vive-focus-controls="hand: right"
+            windows-motion-controls=""
+            raycaster="objects: [raycastable]"
+    ></a-entity>
+    <a-entity
+            id="camera"
+            camera=""
+            look-controls=""
+            wasd-controls=""
+            position="0 3 0"
+            rotation="0 0 0"
+    >
+        <a-entity
+                position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                material="color: cyan; shader: flat"
+                cursor="rayOrigin: mouse; maxDistance: 30;"
+                raycaster="objects: [raycastable];"
+        >
+        </a-entity>
+    </a-entity>
+    <a-entity 
+    position="2 0 -4" 
+    particle-system="preset: rain; size: 0.1"
+    bind__visible="growing">
+        </a-entity>
+
+
+
+        <a-entity
+        geometry="primitive: plane; height: 100; width: 100;"
+        rotation="-90 0 0"
+        position="0 -1 0"
+        proxy-event="event: click; to: a-scene; as: sceneClicked"
+        material="color: red"
+        raycastable
+        place-object
+        >
+        </a-entity>
+        <a-entity
+        id="treeReal"
+        position="2 0 -4"
+        gltf-model="#Tree3Model"
+        modify-materials="path: #NatureTexture1;"
+        bind__scale="treeSize"
+        proxy-event__select="event: click; to: a-scene; as: treeClicked"
+        proxy-event__start="event: mousedown; to: a-scene; as: growTree"
+        proxy-event__stop="event: mouseup; to: a-scene; as: stopGrowing"
+        raycastable
+    ></a-entity>
+    <a-entity
+    bind__visible="currentState === 'Plant'"
+    bind__position="newObjectPosition"
+    gltf-model="#Tree3Model"
+    modify-materials="path: #NatureTexture1;"
+    ></a-entity>
+
+    <a-entity id="menu" position="0 3 -4">
+        <a-entity id="menuBackground" mixin="slice"
+                render-order="menuBackground"></a-entity>
+
+        <a-entity id="mainMenu">
+                <a-entity id="title" text="value: Gratitude Forest; color: #FAFAFA; width: 4; align: center"
+                        position="0 1.2 0.01" render-order="menuItem"></a-entity>
+                <a-entity mixin="button" bind__visible="currentState === 'Explore'"
+                bind-toggle__raycastable="currentState === 'Explore'" text="value: Plant New Tree; color: #0F0"
+                proxy-event="as: plantNewTree"></a-entity>
+                <a-entity class="buttons" layout="type: box; columns: 1; marginRow: -0.5" position="0 0 0.02">
+                        <a-entity mixin="buttonMain" text="value: Tell me more; color: #48BAEA"
+                                proxy-event="as: tellMeMore"></a-entity>
+                        <a-entity mixin="buttonMain" text="value: Move On; color: #F85333"
+                                proxy-event="as: moveOn"></a-entity>
+                </a-entity>
+        </a-entity>
+    </a-entity>
+    
+</a-scene>

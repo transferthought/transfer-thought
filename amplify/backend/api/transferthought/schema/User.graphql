@@ -1,0 +1,29 @@
+type User
+  @model
+  @auth(rules: [{ allow: owner, operations: [create, read, update, delete] }]) {
+  owner: String
+  email: String
+  firstName: String
+  lastName: String
+  autoShowTour: Boolean
+  plan: String
+  unlimted: Boolean
+  unlimtedLifetime: Boolean
+  totalAllottedViews: Int
+  totalViews: Int
+    @auth(
+      rules: [
+        { allow: public, operations: [read, update] }
+        { allow: private, operations: [read, update] }
+      ]
+    )
+  currentMonthViews: Int
+    @auth(
+      rules: [
+        { allow: public, operations: [read, update] }
+        { allow: private, operations: [read, update] }
+      ]
+    )
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}

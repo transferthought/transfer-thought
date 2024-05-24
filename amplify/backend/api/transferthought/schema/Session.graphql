@@ -1,0 +1,15 @@
+type Session
+    @model
+    @key(name: "UserSessionsByAppId", fields: ["owner", "appId"], queryField: "userSessionsByAppId")
+    @key(name: "SessionsByAppId", fields: ["appId", "createdAt"], queryField: "sessionsByAppId")
+    @auth(
+        rules: [{ allow: public, operations: [read, create] }, { allow: private, operations: [read] }, { allow: owner, operations: [create, update, delete] }]
+    ) {
+    id: ID!
+    owner: String
+    appId: ID!
+    data: String!
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+    completedAt: AWSDateTime
+}

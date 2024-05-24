@@ -1,0 +1,304 @@
+{
+  "api": {
+    "Stripe": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "StripeWebhook"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "transferthought": {
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 365,
+                "description": ""
+              },
+              "authenticationType": "API_KEY"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authtransferthought1015a9c5"
+            }
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "transferthought1015a9c5": {
+      "customAuth": false,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "transferthought1015a9c5PostConfirmation",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "transferthought1015a9c5PreAuthentication",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "transferthought1015a9c5PreSignup",
+          "triggerProvider": "Cognito"
+        }
+      ],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "transferthought1015a9c5"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
+    }
+  },
+  "function": {
+    "CreateAssetVariation": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "transferthought"
+        },
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "transferthought"
+        },
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "s3f39ed916"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "StripeCheckoutSession": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "StripeWebhook": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "transferthought1015a9c5PostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "transferthought1015a9c5PreAuthentication": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "transferthought1015a9c5PreSignup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_transferthought1015a9c5_googleClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "transferthought1015a9c5"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateAssetVariation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateAssetVariation"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateAssetVariation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateAssetVariation"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateAssetVariation_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateAssetVariation"
+        }
+      ]
+    },
+    "AMPLIFY_function_StripeCheckoutSession_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "StripeCheckoutSession"
+        }
+      ]
+    },
+    "AMPLIFY_function_StripeCheckoutSession_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "StripeCheckoutSession"
+        }
+      ]
+    },
+    "AMPLIFY_function_StripeWebhook_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "StripeWebhook"
+        }
+      ]
+    },
+    "AMPLIFY_function_StripeWebhook_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "StripeWebhook"
+        }
+      ]
+    },
+    "AMPLIFY_function_transferthought1015a9c5PostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "transferthought1015a9c5PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_transferthought1015a9c5PostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "transferthought1015a9c5PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_transferthought1015a9c5PreAuthentication_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "transferthought1015a9c5PreAuthentication"
+        }
+      ]
+    },
+    "AMPLIFY_function_transferthought1015a9c5PreAuthentication_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "transferthought1015a9c5PreAuthentication"
+        }
+      ]
+    },
+    "AMPLIFY_function_transferthought1015a9c5PreSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "transferthought1015a9c5PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_transferthought1015a9c5PreSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "transferthought1015a9c5PreSignup"
+        }
+      ]
+    }
+  },
+  "predictions": {
+    "speechGeneratoreebef0ec": {
+      "convertType": "speechGenerator",
+      "providerPlugin": "awscloudformation",
+      "service": "Polly"
+    },
+    "transcriptionb08cd37b": {
+      "convertType": "transcription",
+      "providerPlugin": "awscloudformation",
+      "service": "Transcribe"
+    }
+  },
+  "storage": {
+    "s3f39ed916": {
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+type PromoCode @model(subscriptions: null) @auth(rules: [{ allow: public, operations: [read, update] }, { allow: private, operations: [read, update] }]) {
+    id: ID!
+    isValid: Boolean!
+}

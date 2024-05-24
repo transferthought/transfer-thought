@@ -1,0 +1,50 @@
+enum AppTypes {
+    master
+    published
+    prefab
+}
+
+type App
+    @model
+    @key(fields: ["appId", "type"])
+    @key(name: "OwnerAppsByName", fields: ["owner", "name"], queryField: "ownerAppsByName")
+    @key(name: "OwnerAppsByUpdatedAt", fields: ["owner", "updatedAt"], queryField: "ownerAppsByUpdatedAt")
+    @auth(
+        rules: [
+            { allow: public, operations: [read, create] }
+            { allow: private, operations: [read] }
+            { allow: owner, operations: [create, update, delete] }
+            { allow: groups, groups: ["TT-Super-Admin"], operations: [create, update, delete] }
+        ]
+    ) {
+    appId: ID!
+    type: AppTypes!
+    name: String!
+    owner: String
+    state: String!
+    config: String!
+    actions: String!
+    thumbnailUrl: String
+    unlimted: Boolean
+    unlimtedLifetime: Boolean
+    totalViews: Int @auth(rules: [{ allow: public, operations: [read, update] }, { allow: private, operations: [read, update] }])
+    currentMonthViews: Int @auth(rules: [{ allow: public, operations: [read, update] }, { allow: private, operations: [read, update] }])
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+}
+
+type AppInstance
+    @model
+    @key(name: "ByAppId", fields: ["appId", "createdAt"], queryField: "instanceByAppId")
+    @auth(
+        rules: [{ allow: public, operations: [read, create] }, { allow: private, operations: [read] }, { allow: owner, operations: [create, update, delete] }]
+    ) {
+    id: ID!
+    appId: ID!
+    owner: String
+    state: String!
+    config: String!
+    thumbnailUrl: String
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+}

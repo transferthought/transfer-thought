@@ -1,0 +1,114 @@
+<a-scene render-order="menuBackground, menuItem, button">
+        <a-assets>
+                <a-asset-item id="BasketballPlayerModel"
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/athletics/basketball/basketball_player.glb">
+                </a-asset-item>
+                <a-asset-item id="BasketballStadiumModel"
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/athletics/basketball/environments/Basketball+Stadium.glb">
+                </a-asset-item>
+                <img id="BasketballPlayerSkinTexture"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/athletics/basketball/textures/skin_D.jpg"
+                        >
+                <img id="BasketballPlayerClothesTexture"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/athletics/basketball/textures/clothes_D.jpg"
+                        >
+                <img id="BasketballStadiumFloorTexture"
+                        crossorigin
+                        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/athletics/basketball/environments/textures/floor.jpg"
+                        >
+                <img id="pageIconImg"
+                crossorigin
+                src="https://cdn.glitch.com/0ddef241-2c1a-4bc2-8d47-58192c718908%2FdownIcon.png?1557829539105">
+                <img id="sliceImg"
+                crossorigin
+                src="https://cdn.glitch.com/0ddef241-2c1a-4bc2-8d47-58192c718908%2Fslice.png?1557308835598">
+                <img id="logoImg"
+                crossorigin
+                src="https://cdn.glitch.com/0ddef241-2c1a-4bc2-8d47-58192c718908%2Fsymbol-transparent.png?1557312318582">
+        
+        
+                <a-mixin id="font" text="font: roboto"></a-mixin>
+                <a-mixin id="slice"
+                        slice9="color: #050505; transparent: true; width: 3; height: 3;opacity: 0.9; src: #sliceImg; left: 50; right: 52; top: 50; bottom: 52; padding: 0.15">
+                </a-mixin>
+        
+                <a-mixin id="buttonBackground" mixin="slice" slice9="width: 1.3; height: 0.3; color: #030303"
+                        render-order="button"></a-mixin>
+                <a-mixin id="buttonHoverEffect"
+                        animation__mouseenter="property: components.slice9.material.color; type: color; from: #030303; to: #333; easing: easeOutCubic; dur: 150; startEvents: mouseenter"
+                        animation__mouseleave="property: components.slice9.material.color; type: color; from: #333; to: #030303; easing: easeOutCubic; dur: 150; startEvents: mouseleave">
+                </a-mixin>
+                <a-mixin id="buttonText" mixin="font" text="align: center; width: 2.5; zOffset: 0.01; color: #333">
+                </a-mixin>
+                <a-mixin id="button" mixin="buttonBackground buttonHoverEffect buttonText" render-order="button"
+                        proxy-event="event: click; to: a-scene; captureBubbles: true"></a-mixin>
+                <a-mixin id="pageButton" geometry="primitive: plane; width: 0.15; height: 0.15"
+                        material="src: #pageIconImg; shader: flat; transparent: true"
+                        animation__mouseenter="property: components.material.material.color; type: color; from: #FFF; to: #AAF; dur: 100; startEvents: mouseenter"
+                        animation__mouseleave="property: components.material.material.color; type: color; from: #AAF; to: #FFF; dur: 100; startEvents: mouseleave">
+                </a-mixin>
+        </a-assets>
+        <a-entity id="leftHand" laser-controls="hand: left" daydream-controls="hand: left" gearvr-controls="hand: left"
+                oculus-go-controls="hand: left" oculus-touch-controls="" vive-controls=""
+                vive-focus-controls="hand: left" windows-motion-controls="hand: left"
+                raycaster="objects: [raycastable]"></a-entity>
+        <a-entity id="rightHand" laser-controls="hand: right" daydream-controls="hand: right"
+                gearvr-controls="hand: right" oculus-go-controls="hand: right" oculus-touch-controls="hand: right"
+                vive-controls="hand: right" vive-focus-controls="hand: right" windows-motion-controls=""
+                raycaster="objects: [raycastable]"></a-entity>
+        <a-entity id="camera-container"  wasd-controls look-controls position="0 8 0" rotation="0 0 0">
+                <a-entity id="main-camera" camera="">
+                        <a-entity position="0 0 -1" cursor="rayOrigin: mouse; maxDistance: 30; fuse: false"
+                                raycaster="objects: [raycastable]">
+                        </a-entity>
+                        <a-entity id="menu" position="-4 2 -4">
+                                <a-entity id="menuBackground" mixin="slice"
+                                        render-order="menuBackground"></a-entity>
+                        
+                                <a-entity id="mainMenu">
+                                        <a-entity id="title" text="value: Change View; color: #FAFAFA; width: 4; align: center"
+                                                position="0 1.2 0.01" render-order="menuItem"></a-entity>
+                                        <a-entity class="buttons" layout="type: box; columns: 1; marginRow: -0.5" position="0 0.5 0.02">
+                                                <a-entity mixin="button"
+                                                raycastable
+                                                text="value: Player View; color: #0F0"
+                                                proxy-event="as: playerView"></a-entity>
+                                                <a-entity mixin="button"
+                                                raycastable
+                                                text="value: Bird Eye View; color: #0F0"
+                                                proxy-event="as: birdView"></a-entity>
+                                                <a-entity mixin="button"
+                                                raycastable
+                                                text="value: Rotate Player; color: #0F0"
+                                                proxy-event="as: rotatePlayer"></a-entity>
+                                        </a-entity>
+                                </a-entity>
+                        </a-entity>
+                </a-entity>
+        </a-entity>
+        <a-entity
+        bind__visible="currentState === 'Plant'"
+        bind__position="newObjectPosition"
+        gltf-model="#BasketballPlayerModel"
+        modify-materials="path: #BasketballPlayerClothesTexture; secondary: #BasketballPlayerSkinTexture;"
+        scale="0.5 0.5 0.5" 
+        ></a-entity>
+
+        <a-entity id="BasketballStadium" position="0 0 -2.75" gltf-model="#BasketballStadiumModel"
+                modify-materials="path: #BasketballStadiumFloorTexture; secondary: #BasketballStadiumFloorTexture;">
+        </a-entity>
+        <a-entity id="BasketballPlayer" scale="0.5 0.5 0.5" rotation="0 0 0" position="0 0 -2.75" gltf-model="#BasketballPlayerModel"
+                modify-materials="path: #BasketballPlayerClothesTexture; secondary: #BasketballPlayerSkinTexture;">
+        </a-entity>
+        <a-entity
+        geometry="primitive: plane; height: 100; width: 100;"
+        rotation="-90 0 0"
+        position="0 -0.1 0"
+        proxy-event="event: click; to: a-scene; as: sceneClicked"
+        visible="false"
+        raycastable
+        place-object
+        >
+</a-scene>

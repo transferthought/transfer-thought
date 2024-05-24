@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "api": {
+      "transferthought": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "storage": {
+      "s3f39ed916": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "Asset:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": [],
+  "secretNames": [
+    "app_sync_api_key",
+    "app_sync_url"
+  ]
+}

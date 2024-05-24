@@ -1,0 +1,37 @@
+export default {
+    queries: {
+        list: 'ownerAppsByUpdatedAt',
+        single: 'getApp',
+        filter: { type: { eq: 'master' } },
+    },
+    mutations: {
+        create: 'createApp',
+        update: 'updateApp',
+        delete: 'deleteApp',
+    },
+    defaults: {
+        title: 'Untitled',
+    },
+    idAttribute: 'appId',
+
+    sortKeyAttribute: 'type',
+    name: '',
+    appId: null,
+    thumbnail: '',
+    selectedEntityId: null,
+    gizmoMode: 'select',
+    gizmoSnapTranslation: null,
+    gizmoSnapRotation: null,
+    rendering: false,
+    showAddEntityDialog: false,
+    isBottomPanelOpen: false,
+    publishing: false,
+    saving: false,
+    scene: null,
+    snack: null,
+    fetching: false,
+    tour: true,
+    redirectData: null,
+    appListStatus: 'IDLE',
+    appList: [],
+};

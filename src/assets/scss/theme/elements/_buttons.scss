@@ -1,0 +1,13 @@
+.button {
+	@include font-family(heading);
+    box-shadow: 0 8px 16px rgba(get-color(dark, 1), .12);
+
+	&:not(.button-dark):not(.button-primary):not(.button-secondary) {
+		background: linear-gradient(65deg, get-color(light, 1) 0, rgba(get-color(light, 1), .8) 100%);
+		background-origin: border-box;
+
+		&:hover {
+			background-color: color-bg(button-light-hover);
+		}
+	}
+}

@@ -1,0 +1,6 @@
+.header-nav {
+
+    a:not(.button) {
+		@include font-family(heading);
+	}
+}

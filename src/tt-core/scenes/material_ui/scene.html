@@ -1,0 +1,60 @@
+<a-scene environment="preset: forest" render-order="menuBackground, menuItem, button" keyboard-shortcuts="enterVR: false">
+    <a-assets>
+    </a-assets>
+    <a-entity
+            id="leftHand"
+            laser-controls="hand: left"
+            daydream-controls="hand: left"
+            gearvr-controls="hand: left"
+            oculus-go-controls="hand: left"
+            oculus-touch-controls=""
+            vive-controls=""
+            vive-focus-controls="hand: left"
+            windows-motion-controls="hand: left"
+            raycaster="objects: [raycastable]"
+    ></a-entity>
+    <a-entity
+            id="rightHand"
+            laser-controls="hand: right"
+            daydream-controls="hand: right"
+            gearvr-controls="hand: right"
+            oculus-go-controls="hand: right"
+            oculus-touch-controls="hand: right"
+            vive-controls="hand: right"
+            vive-focus-controls="hand: right"
+            windows-motion-controls=""
+            raycaster="objects: [raycastable]"
+    ></a-entity>
+    <a-entity
+            id="camera"
+            camera=""
+            look-controls=""
+            wasd-controls=""
+            position="0 1 0"
+            rotation="0 0 0"
+    >    
+        <a-entity
+                cursor="rayOrigin: mouse;"
+                raycaster
+                ui-mouse-shim
+        >
+        </a-entity>
+     </a-entity>
+<a-entity id="uiPanel" geometry="primitive: plane; width: 3.4; height: 1.7" material="side: double; shader: flat; color: #cfcfcf" position="0 1.5 -6" class="intersectable">
+                        <a-entity
+                        position="0 0 .1"
+                        ui-input-text
+                        ></a-entity>
+                        <a-entity 
+                        position="0 0 .1"
+                       
+                        geometry="primitive: plane; width: 0.5; height 0.175;"
+                        material="color: #009688; shader: flat;"
+                        ui-btn
+                        ui-rounded="borderRadius: 0.0025"
+                        ui-ripple="size: 0.5 0.175 0; clampToSquare: true; zIndex: 0.001;"
+                        text="value: BtnTest"
+                        ></a-entity>
+</a-entity>
+
+</a-scene>

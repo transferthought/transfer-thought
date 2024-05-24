@@ -1,0 +1,45 @@
+<a-scene id="scene" name="scene">
+    <a-assets>
+        <img id="constructionFountainGrove" crossorigin="anonymous" src="https://live.staticflickr.com/65535/48208591282_bfadbaf5b5_f.jpg">
+    </a-assets>
+    <a-entity
+            id="leftHand"
+            name="Left Hand"
+            laser-controls="hand: left"
+            daydream-controls="hand: left"
+            gearvr-controls="hand: left"
+            oculus-go-controls="hand: left"
+            oculus-touch-controls="hand: left"
+            vive-controls="hand: left"
+            vive-focus-controls="hand: left"
+            windows-motion-controls="hand: left"
+    ></a-entity>
+    <a-entity
+            id="rightHand"
+            name="Right Hand"
+            laser-controls="hand: right"
+            daydream-controls="hand: right"
+            gearvr-controls="hand: right"
+            oculus-go-controls="hand: right"
+            oculus-touch-controls="hand: right"
+            vive-controls="hand: right"
+            vive-focus-controls="hand: right"
+            windows-motion-controls="hand: right"
+    ></a-entity>
+    <a-entity
+            id="camera"
+            name="camera"
+            camera="true"
+            camera="true"
+            camera="true"
+            position="0 1 0"
+            rotation="0 0 0"
+    ></a-entity>
+    <a-entity
+        id="image360"
+        name="image360"
+        geometry="primitive: sphere; radius: 500; segmentsWidth: 64; segmentsHeight: 32"
+        material="src: #constructionFountainGrove; color: #FFF; side: back; shader: flat; npot: true"
+        scale='-1 1 1'>
+        </a-entity>
+</a-scene>

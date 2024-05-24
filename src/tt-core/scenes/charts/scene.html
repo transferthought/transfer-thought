@@ -1,0 +1,51 @@
+<a-scene id="scene" name="scene" environment="preset: forest" render-order="menuBackground, menuItem, button">
+    <a-assets>
+        <a-asset-item id="Spade1"
+        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/avatars/construction/Spade_01_FINAL2.glb">
+        </a-asset-item>
+        <a-asset-item id="Spanner1"
+        src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/general/avatars/construction/Spanner_01_FINAL2.glb">
+        </a-asset-item>
+        <a-asset-item id="data" src='[{"x": 1, "y": 8, "z": 0, "size": 1, "color": "#ff0000"},
+        {"x": -2, "y": 3, "z": 1, "size": 1.5, "color": "#00ff00"},
+        {"x": -1, "y": 3, "z": 2, "size": 1, "color": "#0000ff"},
+        {"x": 2, "y": 7, "z": 7, "size": 1.5, "color": "#0000ff"},
+        {"x": 1, "y": 6, "z": 3, "size": 1, "color": "#4CC3D9"}]'>
+        </a-asset-item>
+</a-assets>
+    <a-entity
+            id="leftHand"
+            name="Left Hand"
+            laser-controls="hand: left"
+            daydream-controls="hand: left"
+            gearvr-controls="hand: left"
+            oculus-go-controls="hand: left"
+            oculus-touch-controls=""
+            vive-controls=""
+            vive-focus-controls="hand: left"
+            windows-motion-controls="hand: left"
+    ></a-entity>
+    <a-entity
+            id="rightHand"
+            name="Right Hand"
+            laser-controls="hand: right"
+            daydream-controls="hand: right"
+            gearvr-controls="hand: right"
+            oculus-go-controls="hand: right"
+            oculus-touch-controls="hand: right"
+            vive-controls="hand: right"
+            vive-focus-controls="hand: right"
+            windows-motion-controls=""
+    ></a-entity>
+    <a-entity
+            id="camera"
+            name="camera"
+            camera=""
+            look-controls=""
+            wasd-controls=""
+            position="0 1 0"
+            rotation="0 0 0"
+        >
+        </a-entity>
+        <a-entity charts="type: totem; dataPoints: #data; axis_length: 12"></a-entity>
+</a-scene>

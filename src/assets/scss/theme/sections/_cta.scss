@@ -1,0 +1,14 @@
+.cta-inner {
+	padding-left: 16px;
+	padding-right: 16px;
+    background-color: get-color(primary, 1);
+    background: linear-gradient(to right top, get-color(primary, 1) 0, get-color(primary, 3) 100%);
+}
+
+@include media( '>medium' ) {
+
+	.cta-inner {
+		padding-left: 48px;
+		padding-right: 48px;
+	}
+}

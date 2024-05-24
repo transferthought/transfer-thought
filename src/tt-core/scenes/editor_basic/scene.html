@@ -1,0 +1,37 @@
+<a-scene id="scene" name="scene" environment="preset: default" render-order="menuBackground, menuItem, button">
+    <a-assets>
+    </a-assets>
+
+    <a-entity id="cameraRig" name="cameraRig" position="0 0 0" rotation="0 0 0" movement-controls="camera: #camera; fly: false; enabled: true; speed: 0.1;">
+        <a-entity
+                id="camera"
+                name="camera"
+                camera=""
+                look-controls=""
+                position="0 1.7 0"
+                rotation="0 0 0"
+                raycaster="objects: .raycastable"
+            cursor="rayOrigin: mouse"
+            physics-body="type: static; shape: sphere; sphereRadius: 0.01"
+            super-hands="colliderEvent: raycaster-intersection;
+                            colliderEventProperty: els;
+                            colliderEndEvent: raycaster-intersection-cleared;
+                            colliderEndEventProperty: clearedEls;">
+            >
+        </a-entity>
+        <a-entity id="leftHand" name="Left Hand"   super-hands="colliderEvent: collisions;
+        colliderEventProperty: els;
+        colliderEndEvent: collisions;
+        colliderEndEventProperty: clearedEls;"
+        physics-body="type: static; shape: sphere; sphereRadius: 0.02" oculus-touch-controls="hand: left"
+        hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"
+        physics-collider collision-filter="group: default; collidesWith: default; collisionForces: false;"></a-entity>
+        <a-entity id="rightHand" name="Right Hand" super-hands="colliderEvent: collisions;
+        colliderEventProperty: els;
+        colliderEndEvent: collisions;
+        colliderEndEventProperty: clearedEls;"
+        physics-body="type: static; shape: sphere; sphereRadius: 0.02" oculus-touch-controls="hand: right"
+        hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"
+        physics-collider collision-filter="group: default; collidesWith: default; collisionForces: false;"></a-entity>
+    </a-entity>
+</a-scene>

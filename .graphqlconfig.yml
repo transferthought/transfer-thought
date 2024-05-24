@@ -1,0 +1,15 @@
+projects:
+  transferthought:
+    schemaPath: src/tt-api/graphql/schema.json
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/tt-api/graphql
+extensions:
+  amplify:
+    version: 3

@@ -1,0 +1,33 @@
+enum PageTypes {
+    master
+    published
+}
+
+type Page
+    @model
+    @key(fields: ["id", "type"])
+    @key(name: "OwnerPagesByTitle", fields: ["owner", "title"], queryField: "ownerPagesByTitle")
+    @key(name: "OwnerPagesByUpdatedAt", fields: ["owner", "updatedAt"], queryField: "ownerPagesByUpdatedAt")
+    @auth(rules: [{ allow: public, operations: [read] }, { allow: private, operations: [read] }, { allow: owner, operations: [create, update, delete] }]) {
+    id: ID!
+    type: PageTypes!
+    title: String!
+    owner: String
+    data: String!
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+    apps: [PageApp] @connection(keyName: "byPage", fields: ["id"])
+}
+
+# Create a join model and disable queries as you don't need them
+# and can query through Page.apps and App.Pages
+type PageApp
+    @model
+    @key(name: "byPage", fields: ["pageId", "appId"])
+    @key(name: "byApp", fields: ["appId", "pageId"])
+    @auth(rules: [{ allow: public, operations: [read] }, { allow: private, operations: [read] }, { allow: owner, operations: [create, update, delete] }]) {
+    id: ID!
+    pageId: ID!
+    appId: ID!
+    data: String!
+}

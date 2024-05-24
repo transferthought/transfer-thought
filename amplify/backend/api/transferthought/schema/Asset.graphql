@@ -1,0 +1,37 @@
+enum TagTypes {
+    thumbnail
+    pdf
+    unknown
+    go
+}
+
+type Asset
+    @model(subscriptions: null)
+    @key(name: "OwnerAssetsByName", fields: ["owner", "name"], queryField: "ownerAssetsByName")
+    @key(name: "OwnerTagAssetsByName", fields: ["owner", "tag", "name"], queryField: "ownerTagAssetsByName")
+    @key(name: "OwnerAssetsByUpdatedAt", fields: ["owner", "updatedAt"], queryField: "ownerAssetsByUpdatedAt")
+    @auth(
+        rules: [
+            { allow: public, operations: [read, create, update] }
+            { allow: private, operations: [read] }
+            { allow: owner, operations: [create, update, delete] }
+        ]
+    ) {
+    id: ID!
+    parentId: ID
+    parent: Asset @connection(fields: ["parentId"])
+    name: String!
+    tag: TagTypes!
+    fileType: String!
+    key: String!
+    owner: String
+    isFolder: Boolean
+    variations: String
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+}
+
+type Subscription {
+    onCreateAsset(owner: String): Asset @aws_subscribe(mutations: ["createAsset"])
+    onUpdateAsset(owner: String): Asset @aws_subscribe(mutations: ["updateAsset"])
+}

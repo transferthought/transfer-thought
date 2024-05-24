@@ -1,0 +1,84 @@
+<a-scene environment="preset: forest" render-order="menuBackground, menuItem, button">
+    <a-assets>
+            
+        <!-- Base mixins. -->
+        <a-mixin id="font" text="font: roboto"></a-mixin>
+        <a-mixin id="slice"
+                 slice9="color: #050505; transparent: true; opacity: 0.9; src: #sliceImg; left: 50; right: 52; top: 50; bottom: 52; padding: 0.15"></a-mixin>
+
+        <!-- Menu and button mixins. Mixins can be composed from other mixins. -->
+        <a-mixin id="buttonBackground" mixin="slice" slice9="width: 1.3; height: 0.3; color: #030303"
+                 render-order="button"></a-mixin>
+        <a-mixin
+                id="buttonHoverEffect"
+                animation__mouseenter="property: components.slice9.material.color; type: color; from: #030303; to: #333; easing: easeOutCubic; dur: 150; startEvents: mouseenter"
+                animation__mouseleave="property: components.slice9.material.color; type: color; from: #333; to: #030303; easing: easeOutCubic; dur: 150; startEvents: mouseleave"></a-mixin>
+        <a-mixin id="buttonText" mixin="font" text="align: center; width: 2.5; zOffset: 0.01; color: #333"></a-mixin>
+        <a-mixin id="button" mixin="buttonBackground buttonHoverEffect buttonText" render-order="button"
+                 proxy-event="event: click; to: a-scene; captureBubbles: true"></a-mixin>
+        <a-mixin id="pageButton" geometry="primitive: plane; width: 0.15; height: 0.15"
+                 material="src: #pageIconImg; shader: flat; transparent: true"
+                 animation__mouseenter="property: components.material.material.color; type: color; from: #FFF; to: #AAF; dur: 100; startEvents: mouseenter"
+                 animation__mouseleave="property: components.material.material.color; type: color; from: #AAF; to: #FFF; dur: 100; startEvents: mouseleave"></a-mixin>
+
+        <a-mixin id="buttonMain" mixin="button"></a-mixin>
+    </a-assets>
+    <a-entity
+            id="leftHand"
+            laser-controls="hand: left"
+            daydream-controls="hand: left"
+            gearvr-controls="hand: left"
+            oculus-go-controls="hand: left"
+            oculus-touch-controls=""
+            vive-controls=""
+            vive-focus-controls="hand: left"
+            windows-motion-controls="hand: left"
+            raycaster="objects: [raycastable]"
+    ></a-entity>
+    <a-entity
+            id="rightHand"
+            laser-controls="hand: right"
+            daydream-controls="hand: right"
+            gearvr-controls="hand: right"
+            oculus-go-controls="hand: right"
+            oculus-touch-controls="hand: right"
+            vive-controls="hand: right"
+            vive-focus-controls="hand: right"
+            windows-motion-controls=""
+            raycaster="objects: [raycastable]"
+    ></a-entity>
+    <a-entity
+            id="camera"
+            camera=""
+            look-controls=""
+            wasd-controls="wsAxis: y"
+            position="0 4 0"
+            rotation="0 0 0"
+    >
+        <a-entity
+                position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                material="color: cyan; shader: flat"
+                cursor="maxDistance: 30; fuse: false"
+                raycaster="objects: [raycastable]"
+        >
+        </a-entity>
+    </a-entity>
+        <a-entity github-api></a-entity>
+        <a-entity position="-6 2 -8" layout="type: box; columns: 5; margins: 4; marginColumn: 4; marginRow: 4" bind-for="for: repository; in: repositoryList; key: name">
+                <template>
+        <a-entity id="menu">
+                        <a-entity id="menuBackground" mixin="slice" slice9="height: 3; width: 2; color: #171717"
+                                  render-order="menuBackground"></a-entity>
+                        <!-- Main menu. -->
+                        <a-entity id="mainMenu">
+                            <a-entity id="title" text="value: {{repository.name}}; color: #FAFAFA; width: 4; align: center"
+                                ></a-entity>
+                        </a-entity>
+        </a-entity>
+
+
+                </template>
+        </a-entity>        
+
+</a-scene>

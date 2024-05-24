@@ -1,0 +1,21 @@
+
+type Course
+@model
+@key(name: "OwnerCoursesByTitle", fields: ["owner", "title"], queryField: "ownerCoursesByTitle")
+@auth(
+    rules: [
+        { allow: public, operations: [read] },
+        { allow: private, operations: [read] }
+        { allow: owner, operations: [create, update, delete]}
+    ]
+)
+{
+    id: ID!,
+    title: String!,
+    description: String,
+    owner: String,
+    sections: String!,
+    thumbnailUrl: String,
+    createdAt: AWSDateTime!,
+    updatedAt: AWSDateTime!
+}

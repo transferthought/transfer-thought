@@ -1,0 +1,33 @@
+<a-scene>
+    <a-assets timeout="10000">
+        <video id="forest" autoplay loop="true" crossorigin src="https://tt-assets-us-east-1.s3.amazonaws.com/assets/video/nature/Forest_15_3b_Videvo.mov"></video>
+    </a-assets>
+
+    <a-entity
+            id="camera"
+            camera=""
+            position="0 1 0"
+            rotation="0 0 0"
+    >
+    </a-entity>
+
+        <a-entity
+        animation__rotation="property: rotation; dir: alternate; easing: easeInOutQuad; dur: 7000; loop: true; to: 360 360 360"
+        geometry='primitive: torus; radius: 1; radius-tubular: 0.4'
+        animation__radius="property: geometry.radius; dir: alternate; dur: 1000; loop: true; to: 0.9"
+        material="color: #008080; opacity: 0.7"
+        animation__color="property: material.color; dir: alternate; easing: easeInOutQuad; dur: 7000; loop: true; to: #ffa500"
+        position="0 1 -5"
+        rotation="0 0 0"
+        bind__scale="breathSize">
+        </a-entity>
+        <a-entity
+        geometry="primitive: plane"
+        material="src: #forest;"
+        position="0 1 -10"
+        scale="40 40 0"
+        >
+        </a-entity>
+
+
+</a-scene>
