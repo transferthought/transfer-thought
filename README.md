@@ -1,29 +1,20 @@
-# transferthought
+# Transfer Thought
+
+Transfer Thought is a web-based platform for easily creating and deploying virtual reality experiences. 
+
+Learn more by visiting our website: https://www.transferthought.com/
+Or create a free account and try it out: https://scenario.transferthought.com/
 
 ## Project setup
-```
-npm install
-```
+Documentation on setup coming soon.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Contribution guidelines
+Details on contribution guidelines coming soon. 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Disclaimer
 
-### Run your tests
-```
-npm run test
-```
+We are excited to open source Transfer Thought under the MIT License. While we have made every effort to ensure that all components of the project conform to the MIT License, there may be proprietary or non-MIT licensed materials that were inadvertently included over time.
 
-### Lints and fixes files
-```
-npm run lint
-```
+We are committed to identifying and removing any such materials as they are discovered. If you encounter any content within this project that you believe does not comply with the MIT License, please report it to us immediately.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Thank you for your understanding and cooperation.
