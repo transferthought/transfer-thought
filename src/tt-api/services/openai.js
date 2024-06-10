@@ -28,4 +28,4 @@ class OpenAI {
 }
 
 // TODO - make these local to repo
-export default new OpenAI(chatGPTURL, dallEUrl);
+export default new OpenAI('chatGPTURL', 'dallEUrl');
