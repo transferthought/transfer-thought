@@ -5,9 +5,6 @@ Transfer Thought is a web-based platform for easily creating and deploying virtu
 Learn more by visiting our website: https://www.transferthought.com/
 Or create a free account and try it out: https://scenario.transferthought.com/
 
-## Project setup
-Documentation on setup coming soon.
-
 ## Contribution guidelines
 Details on contribution guidelines coming soon. 
 
@@ -38,9 +35,7 @@ Create an AWS account if you don't already have one: [https://aws.amazon.com/fre
 Install Amplify CLI
 -------------------
 
-Install Amplify CLI on your local computer:
-
-`npm install -g @aws-amplify/cli`
+Install Amplify CLI on your local computer: `npm install -g @aws-amplify/cli`
 
 Configure Amplify with AWS Profile
 ----------------------------------
@@ -57,9 +52,7 @@ You should have done this:
 Setting up the Transfer Thought Amplify Project
 -----------------------------------------------
 
-Initialize the Amplify project:
-
-`amplify init`
+Initialize the Amplify project: `amplify init`
 
 * Select the dev environment or create a new one.
 * Select the new environment.
@@ -81,9 +74,7 @@ Install the necessary packages: `npm install`
 Run Frontend Locally
 --------------------
 
-Start the frontend locally (connected to the backend on AWS):
-
-`npm run serve`
+Start the frontend locally (connected to the backend on AWS): `npm run serve`
 
 Create and Deploy Frontend to AWS
 ---------------------------------
