@@ -45,15 +45,14 @@ Install Amplify CLI on your local computer:
 Configure Amplify with AWS Profile
 ----------------------------------
 
-Configure Amplify:
+Configure Amplify: `amplify configure`
 
-`amplify configure`
+Follow the instructions here: https://docs.amplify.aws/gen1/javascript/tools/cli/start/set-up-cli/#configure-the-amplify-cli
 
-Follow the instructions to:
-
-*   Create an IAM user account for Amplify Administrator
-*   Create an access key
-*   Create a local AWS profile
+You should have done this:
+*   Created an IAM user account for Amplify Administrator
+*   Created an access key
+*   Created a local AWS profile
 
 Setting up the Transfer Thought Amplify Project
 -----------------------------------------------
