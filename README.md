@@ -8,6 +8,8 @@ Or create a free account and try it out: https://scenario.transferthought.com/
 ## Contribution guidelines
 Details on contribution guidelines coming soon. 
 
+Discord Channel: https://discord.gg/xQ4zfw3UZc
+
 ### Disclaimer
 
 We are excited to open source Transfer Thought under the MIT License. While we have made every effort to ensure that all components of the project conform to the MIT License, there may be proprietary or non-MIT licensed materials that were inadvertently included over time.
